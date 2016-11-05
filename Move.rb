@@ -24,4 +24,12 @@ class Move
 			return false
 		end
 	end
+	def makeMove()
+		if @type == "move"
+			board[newPosition] = board[oldPosition]
+		elsif @type = "capture"
+	end	
+	def piecesToCapture
+		@
+	end
 end

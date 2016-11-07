@@ -6,6 +6,7 @@ class Piece
 	def getOwner()
 		return @ownerID
 	end
+
 end
 
 #a = Piece.new

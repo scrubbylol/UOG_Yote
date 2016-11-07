@@ -20,8 +20,8 @@ class Board
 	end
 
 	def movePiece(initialPosition, targetPosition)
-		#@board[targetPosition] = @board[initialPosition]
-		#@board[initialPosition]
+		@board[targetPosition] = @board[initialPosition]
+		@board.removePiece(initialPosition)
 	end 
 
 	def pieceOnBoard?(playerID)
@@ -43,16 +43,13 @@ class Board
 		return @board[position].getOwner()
 	end
 
-	private
-
-	attr_reader :Cells 
 end
 
-testBoard = Board.new
-testBoard.Board()
-testPiece = Piece.new
-testPiece.Piece(1)
-testBoard.addPiece(testPiece,6)
+#testBoard = Board.new
+#testBoard.Board()
+#testPiece = Piece.new
+#testPiece.Piece(1)
+#testBoard.addPiece(testPiece,6)
 #testBoard.removePiece(6)
 #puts(testBoard.getOwnerAtPosition(6))
 #puts (testBoard.pieceOnBoard?(1))

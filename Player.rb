@@ -1,12 +1,12 @@
 class Player
-	def Player (playerID, piecesInHand, piecesCaptured, gameWins)
+	def Player (playerID)
 		@playerID = playerID
-		@piecesInHand = piecesInHand
-		@piecesCaptured = piecesCaptured
-		@gameWins = gameWins	
+		@piecesInHand = 15
+		@piecesCaptured = 0
+		@gameWins = 0	
 	end
 
-	def getPiece()
+	def getPieces()
 		return @piecesInHand
 	end
 
@@ -38,20 +38,17 @@ class Player
 	end
 end
 
-playerExample = Player.new
-playerExample.Player(1, 12, 0, 1)
-puts playerExample.getPiece()
-puts playerExample.hasPieces()
-puts playerExample.getPlayerID()
-puts playerExample.getPiecesCaptured()
-puts playerExample.getWin()
-playerExample.addWin()
-playerExample.addPieceCaptured()
-puts playerExample.getPiecesCaptured()
-puts playerExample.getWin()
-playerExample.reset()
-puts playerExample.getPiecesCaptured()
-puts playerExample.getPiece()
-
-
-puts"hello world"
+#playerExample = Player.new
+#playerExample.Player(1, 12, 0, 1)
+#puts playerExample.getPiece()
+#puts playerExample.hasPieces()
+#puts playerExample.getPlayerID()
+#puts playerExample.getPiecesCaptured()
+#puts playerExample.getWin()
+#playerExample.addWin()
+#playerExample.addPieceCaptured()
+#puts playerExample.getPiecesCaptured()
+#puts playerExample.getWin()
+#playerExample.reset()
+#puts playerExample.getPiecesCaptured()
+#puts playerExample.getPiece()

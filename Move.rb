@@ -23,13 +23,28 @@ class Move
 		if newPosition > 30
 			return false
 		end
+		if @type == "capture"
+			if (@board[@oldPosition + 1] == nil || @board[@oldPosition - 1] == nil || @board[@oldPosition + 6] == nil || @board[@oldPosition - 6] == nil)
+				return false
+			end
+			currentlyPlayer = board[@oldPosition].getOwner()
+			if (@board[@oldPosition + 1].getOwner == currentlyPlayer || @board[@oldPosition - 1].getOwner == currentlyPlayer || @board[@oldPosition + 6].getOwner == currentlyPlayer || @board[@oldPosition - 6].getOwner == currentlyPlayer)
+				return false
+			end
 	end
 	def makeMove()
 		if @type == "move"
-			board[newPosition] = board[oldPosition]
+			@board[newPosition] = board[oldPosition]
+			@board.removePiece(oldPosition)
 		elsif @type = "capture"
+			@board[newPosition] = board[oldPosition]
+			@board.removePiece(oldPosition)
+			piecesToCapture()
+			getExtraPicesToRemove()
 	end	
-	def piecesToCapture
-		@
+	def piecesToCapture()
+		@board.removePiece(oldPosition)
 	end
+	def getExtraPicesToRemove(position)
+		@board.removePiece(position)
 end

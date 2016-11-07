@@ -10,7 +10,7 @@ class Move
 		if (@oldPosition - @newPosition = 1 ||  @oldPosition - @newPosition = -1 || @oldPosition - @newPosition = 6 || @oldPosition - @newPosition = -6 )
 			type = "move"
 		elsif (@oldPosition - @newPosition = 2 ||  @oldPosition - @newPosition = -2 || @oldPosition - @newPosition = +12 || @oldPosition - @newPosition = -12)
-			type = "capture"_
+			type = "capture"
 		else
 			return false
 		end
@@ -27,9 +27,11 @@ class Move
 	def makeMove()
 		if @type == "move"
 			board[newPosition] = board[oldPosition]
-		elsif @type = "capture"
+		elsif 
+			@type = "capture"
+		end
 	end	
 	def piecesToCapture
-		@
+		#@
 	end
 end

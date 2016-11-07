@@ -45,6 +45,7 @@ class Move
 	def piecesToCapture()
 		@board.removePiece(oldPosition)
 	end
-	def getExtraPicesToRemove(position)
-		@board.removePiece(position)
+	def getExtraPicesToRemove()
+		input = ask "Which position to remove"
+		@board.removePiece(input)
 end

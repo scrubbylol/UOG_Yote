@@ -40,9 +40,10 @@ class Board
 	end
 
 	def getOwnerAtPosition(position)
+		#@board[position].getOwner()
 		return @board[position].getOwner()
+		#return @piece
 	end
-
 end
 
 #testBoard = Board.new

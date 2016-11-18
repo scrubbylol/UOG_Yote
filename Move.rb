@@ -1,7 +1,7 @@
 class Move
 	def Move(oldPosition, newPosition, player, board)
 		@oldPosition = oldPosition
-		@newPosition = piecesInHand
+		@newPosition = newPosition
 		@player = player
 		@board = board	
 	end
@@ -15,14 +15,16 @@ class Move
 			return false
 		end
 
-		if @board[newPosition].nil?
+		if (@board.isEmpty?(@newPosition))
 			return true
 		else 
-		end
-			return false
-		if newPosition > 30
 			return false
 		end
+
+		if @newPosition > 30
+			return false
+		end
+
 		if @type == "capture"
 			if (@board[@oldPosition + 1] == nil || @board[@oldPosition - 1] == nil || @board[@oldPosition + 6] == nil || @board[@oldPosition - 6] == nil)
 				return false
@@ -31,28 +33,29 @@ class Move
 			if (@board[@oldPosition + 1].getOwner == currentlyPlayer || @board[@oldPosition - 1].getOwner == currentlyPlayer || @board[@oldPosition + 6].getOwner == currentlyPlayer || @board[@oldPosition - 6].getOwner == currentlyPlayer)
 				return false
 			end
+		end
 	end
+
 	def makeMove()
 		if @type == "move"
-			board[@newPosition] = board[@oldPosition]
-		elsif 
-			@type = "capture"
-		end
-	end	
-	def piecesToCapture
-		#@
 			@board[@newPosition] = board[@oldPosition]
-			@board.removePiece(oldPosition)
-		elsif @type = "capture"
+			@board.removePiece(@oldPosition)
+		elsif @type == "capture"
 			@board[@newPosition] = board[@oldPosition]
 			@board.removePiece(@oldPosition)
 			piecesToCapture()
 			getExtraPicesToRemove()
+		end
 	end	
+
 	def piecesToCapture()
 		@board.removePiece(@oldPosition)
+
 	end
+
 	def getExtraPicesToRemove()
-		input = ask "Which position to remove"
+		puts "Which position to remove"
+		input = gets 
 		@board.removePiece(input)
+	end
 end

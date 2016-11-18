@@ -11,6 +11,7 @@ class Board
 
 	def isEmpty?(position)
 		if position > -1 && position < 31
+			#puts @board[position]
 			if @board[position].nil?
 				return true
 			else

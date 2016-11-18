@@ -50,17 +50,18 @@ class Game
 						puts ("Where would you like to move piece #{pieceToMove}")
 						print ("> ")
 						newPieceLocation = gets;
-
 						@move = Move.new
 
 						if (turn == 1)
+							puts pieceToMove
+							puts newPieceLocation
 							@move.Move(pieceToMove.to_i, newPieceLocation.to_i, @player1, @board)
 						else
 							@move.Move(pieceToMove.to_i, newPieceLocation.to_i, @player2, @board)
 						end
 
 						if (@move.isMoveValid() == true)
-							print ("true")
+							@move.makeMove()
 						else
 							print ("false")
 						end

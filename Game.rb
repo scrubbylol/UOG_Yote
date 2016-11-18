@@ -53,8 +53,6 @@ class Game
 						@move = Move.new
 
 						if (turn == 1)
-							puts pieceToMove
-							puts newPieceLocation
 							@move.Move(pieceToMove.to_i, newPieceLocation.to_i, @player1, @board)
 						else
 							@move.Move(pieceToMove.to_i, newPieceLocation.to_i, @player2, @board)
@@ -62,21 +60,24 @@ class Game
 
 						if (@move.isMoveValid() == true)
 							@move.makeMove()
-						else
-							print ("false")
+							if (turn == 1)
+								turn = 2
+							else
+								turn = 1
+							end
 						end
 					else
-						puts ("That is not Player #{turn}'s piece!")
+						puts ("\nThat is not Player #{turn}'s piece!")
 					end
 				else
 					puts ("Player #{turn} has no pieces on board!")
 				end
 			elsif (inp == "2\n")
-				print ("\nPlayer #{turn} place a piece (0-30): ")
+				print ("\nPlayer #{turn} place a piece (1-30): ")
 				location = gets
 				@piece = Piece.new
 				@piece.Piece(turn)
-				if (@board.isEmpty?(location.to_i) == true)
+				if (@board.isEmpty?(location.to_i) == true && location.to_i != 0)
 					@board.addPiece(@piece, location.to_i)
 					if (turn == 1)
 						turn = 2
@@ -84,7 +85,11 @@ class Game
 						turn = 1
 					end
 				else
-					puts ("That spot is taken!")
+					if (location.to_i < 1 || location.to_i > 30)
+						puts ("\nEnter a number between 1-30!")
+					else
+						puts ("\nThat spot is taken!")
+					end
 				end
 			end
 		end
